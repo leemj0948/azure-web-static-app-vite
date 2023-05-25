@@ -34,8 +34,8 @@ jobs:
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.azure-static-web-apps-victorious-ground-0defe1710 }}
+        with: 
+          azure_static_web_apps_api_token: ${{ secrets.AZURE-STATIC-WEB-APPS-VICTORIOUS-GROUND-0DEFE1710 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
