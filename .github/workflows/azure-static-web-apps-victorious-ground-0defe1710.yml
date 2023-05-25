@@ -30,7 +30,6 @@ jobs:
           app_location: "/" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
-          deployment_token: "488e2383d926fea42f31dbf2d3cf230840cc5090d12c8bf5fa08c11f59a64f5e3-ff1ba66e-370a-43cc-a3c4-03cce27fd1a4010202620"
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
