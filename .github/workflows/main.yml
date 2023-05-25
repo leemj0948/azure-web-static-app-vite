@@ -26,6 +26,9 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          CI: true
+
 
       - name: Azure Login
         uses: azure/login@v1
