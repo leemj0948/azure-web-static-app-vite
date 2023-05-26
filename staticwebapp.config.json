@@ -14,12 +14,6 @@
           "frontdoor-endpoint-efggfchghpfbbrh4.z01.azurefd.net"
         ]
       },  "routes": [
-        {
-            "route": "/members",
-            "allowedRoles": ["authenticated", "members"],
-            "headers": {
-                "Cache-Control": "no-store"
-            }
-        }
+       
     ]
 }
