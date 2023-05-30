@@ -23,6 +23,7 @@ function App() {
       
       const Parallel = Promise.all([response,response1,response2,response3,response4])
       console.log(Parallel,'Parallel')
+      console.log('response:',response.status,'response1:',response1.status,'response2:',response2.status,'response3:',response3.status,'response4:',response4.status)
       console.log('처리완료')
       if(response.ok){
         const data:responseType = await response.json();
