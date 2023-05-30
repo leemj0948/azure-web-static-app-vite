@@ -5,7 +5,22 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-
+  const [res,setRest] = useState<string[]>([])
+  const callApi = ()=>{
+    const URL = 'https://jsonplaceholder.typicode.com/posts'
+    fetch(URL)
+    .then(response => response.json())
+    .then((data:string) => {
+      const resObj:string[] = [...res];
+      resObj.push(data ? data : '');
+      setRest(resObj);
+    })
+    .catch(error => console.error(error));
+  }
+  const btnClick = () =>{
+    callApi();
+    setCount((count) => count + 1)
+  }
   return (
     <>
       <div>
@@ -18,7 +33,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={btnClick}>
           count is {count}
         </button>
         <p>
