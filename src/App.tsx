@@ -12,10 +12,17 @@ function App() {
   const [count, setCount] = useState(0)
   const [res,setRest] = useState<responseType[]>([])
   const callApi = async()=>{
-    const URL = 'https://jsonplaceholder.typicode.com/posts/1'
+    const URL = 'https://jsonplaceholder.typicode.com/posts'
     console.log('처리전')
     try{
-      const response = await fetch(URL);
+      const response = await fetch(`${URL}/1`);
+      const response1 = await fetch(`${URL}/2`);
+      const response2 = await fetch(`${URL}/3`);
+      const response3 = await fetch(`${URL}/4`);
+      const response4 = await fetch(`${URL}/5`);
+      
+      const Parallel = Promise.all([response,response1,response2,response3,response4])
+      console.log(Parallel,'Parallel')
       console.log('처리완료')
       if(response.ok){
         const data:responseType = await response.json();
@@ -35,7 +42,6 @@ function App() {
     callApi();
     setCount((count) => count + 1)
   }
-  console.log(res)
   return (
     <>
       <div>
