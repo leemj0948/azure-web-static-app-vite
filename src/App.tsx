@@ -11,21 +11,28 @@ interface responseType{
 function App() {
   const [count, setCount] = useState(0)
   const [res,setRest] = useState<responseType[]>([])
-  const callApi = ()=>{
-    const URL = 'https://jsonplaceholder.typicode.com/posts'
-    fetch(URL)
-    .then(response => response.json())
-    .then((data:responseType) => {
-      const resObj:responseType[] = [...res];
-      data??resObj.push(data);
-      setRest(resObj);
-    })
-    .catch(error => console.error(error));
+  const callApi = async()=>{
+    const URL = 'https://jsonplaceholder.typicode.com/posts/1'
+    try{
+      const response = await fetch(URL);
+      if(response.ok){
+        const data:responseType = await response.json();
+        const resObj:responseType[] = [...res];
+        data && resObj.push(data);
+        setRest(resObj)
+      }else{
+        throw new Error('network error');
+      }
+
+    }catch(err){
+      console.log(err)
+    }
   }
   const btnClick = () =>{
     callApi();
     setCount((count) => count + 1)
   }
+  console.log(res)
   return (
     <>
       <div>
@@ -42,6 +49,7 @@ function App() {
           count is {count}
         </button>
         {res.map((list:responseType,i:number)=>{
+          console.log(list);
           return (
             <p key={i}>{list.title}</p>
           )
