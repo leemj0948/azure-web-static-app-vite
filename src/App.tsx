@@ -13,14 +13,17 @@ function App() {
   const [res,setRest] = useState<responseType[]>([])
   const callApi = async()=>{
     const URL = 'https://jsonplaceholder.typicode.com/posts/1'
+    console.log('처리전')
     try{
       const response = await fetch(URL);
+      console.log('처리완료')
       if(response.ok){
         const data:responseType = await response.json();
         const resObj:responseType[] = [...res];
         data && resObj.push(data);
         setRest(resObj)
       }else{
+        console.log('오류')
         throw new Error('network error');
       }
 
